@@ -1,0 +1,36 @@
+{% extends 'novel/base.html' %}
+
+{% block content %}
+<div id="detail-home">
+  <div class="detail-wrapper">
+    <aside class="detail-menu">
+      <ul>
+        <li><a href="{% url 'novel:comment_create' story.pk %}">コメントする</a></li>
+        <li><a href="{% url 'novel:story_update' story.pk %}">続きを書く</a></li>
+        <li><a href="{% url 'novel:story_list' %}">一覧に戻る</a></li>
+      </ul>
+    </aside>
+    <article class="detail-box">
+      <div class="detail-item">
+        <div class="detail-info">
+          <h1>{{ story.title }}</h1>
+          <p>作成日:{{ story.created_at }}</p>
+          <p>更新日:{{ story.update_at }}</p>
+          <p>カテゴリー:{{ story.category }}</p>
+        </div>
+        <div class="story-content">
+          {{ story.text | linebreaksbr | urlize }}
+        </div>
+      </div>
+    </article>
+  </div>
+  <section class="section">
+    <h2 class="comment">コメント</h2>
+    {% for comment in story.comment_set.all %}
+      <div class="comment-box">
+        {{ comment | linebreaks | urlize }}
+      </div>
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% load static %}
+{% load novel %}
+
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+  <meta charset='utf-8'>
+  <title>WaSへようこそ</title>
+  <meta name="description" content="他人が途中まで書いた物語の続きを書こう！手軽に書ける物語投稿サイト">
+  <link rel="stylesheet" href="https://unpkg.com/ress@4.0.0/dist/ress.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+<body>
+    <div class="header-menu">
+    <header class="page-header">
+      <img class="logo" src="{% static 'images/favicon.png' %}" alt="WaS">
+      <h1>物語を紡ごう！</h1>
+    </header>
+      {% story_search request %}
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

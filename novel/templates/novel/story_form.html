@@ -1,0 +1,24 @@
+{% extends 'novel/base.html' %}
+
+{% block content %}
+
+<div class="create-wrapper">
+  <ul>
+    <li><a href="{% url 'novel:category_create' %}">カテゴリを作成する</a></li>
+  </ul>
+  <div class="warning">
+    <p>※求めてるカテゴリーがない場合先に作成してください。</p>
+  </div>
+  <div class="create-form">
+  <form action="" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button class="createbutton" type="submit">作成</button>
+  </form>
+  </div>
+  <ul>
+    <li><a href="{% url 'novel:story_list' %}">一覧に戻る</a></li>
+  </ul>
+</div>
+
+{% endblock %}

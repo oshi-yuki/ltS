@@ -1,0 +1,13 @@
+{% extends 'novel/base.html' %}
+
+{% block content %}
+<div class=category-form-wrapper>
+    <h1>ワードを入力してください</h1>
+    <div class="category_form">
+      <form action="" method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+      </form>
+  </div>
+</div>
+{% endblock %}

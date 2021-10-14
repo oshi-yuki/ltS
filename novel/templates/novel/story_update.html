@@ -1,0 +1,22 @@
+{% extends 'novel/base.html' %}
+
+{% block content %}
+ <div class="create-wrapper">
+  <div class="detail-info">
+    <h1>タイトル：{{ story.title }}</h1>
+    <p>作成日:{{ story.created_at }}</p>
+    <p>更新日:{{ story.update_at }}</p>
+    <p>カテゴリー:{{ story.category }}</p>
+  </div>
+    <div class="create-form">
+      <form action="" method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button class="createbutton" type="submit">更新する</button>
+      </form>
+    </div>
+    <ul>
+      <li><a href="{% url 'novel:story_list' %}">一覧に戻る</a></li>
+    </ul>
+  </div>
+{% endblock %}

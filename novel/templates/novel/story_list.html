@@ -1,0 +1,59 @@
+{% extends 'novel/base.html' %}
+{% load novel %}
+
+
+{% block content %}
+<div class="list-menu">
+  <div class=list-content>
+    <div class="link-menu">
+      <ul>
+        <li><a href="{% url 'novel:story_create' %}">ストーリーを作る</a></li>
+        <li><a href="{% url 'novel:story_list' %}">一覧</a></li>
+      </ul>
+    </div>
+    <article class='box'>
+      <header class="post-info">
+        <h2>物語の紹介</h2>
+        <p>気になる物語を読んで書き加えて見ましょう！</p>
+      </header>
+      <div class="wrapper grid">
+      {% for story in story_list %}
+        <div class="item">
+        <h1><a href="{% url 'novel:story_detail' story.pk %}">{{ story.title }}</a></h1>
+        <p>作成日：{{ story.created_at }}</p>
+        <p>更新日:{{ story.update_at}}</p>
+        <p>カテゴリー:{{ story.category }}</p>
+        <p>{{ story.text | truncatechars:80 }}</p>
+        </div>
+      {% endfor %}
+      </div>
+    </article>
+    <aside class="column is-4 is-offset-1 menu">
+      {% create_category_and_tags_list %}
+    </aside>
+  </div>
+  <div class="page-link">
+    {% if page_obj.has_previous %}
+      <a href="?{% url_replace request 'page' page_obj.has_previous_page_number %}">前へ</a>
+
+    {% endif %}
+
+    {% for  num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <span>{{ num }}</span>
+      {% else %}
+        <a href="?{% url_replace request 'page' num %}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a href="?{% url_replace request 'page' page_obj.next_page_number %}">次へ</a>
+    {% endif %}
+  </div>
+</div>
+<footer>
+  <div class="wrapper">
+    <a href="{% url 'novel:was_terms' %}"><p>利用規約</p></a>
+  </div>
+</footer>
+{% endblock %}

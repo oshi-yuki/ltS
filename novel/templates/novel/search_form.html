@@ -1,0 +1,14 @@
+
+<form action="{% url 'novel:story_list' %}" method='GET'>
+<div class="search-form">
+  <div class="field">
+      {{ form.key_word }}
+  </div>
+  <div class="select">
+    <label>カテゴリー</label>
+    {{ form.category }}
+  </div>
+
+  <button class="button is-primary" type="submit">検索</button>
+</div>
+</form>
