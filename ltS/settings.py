@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e*vjma=n@ecn^0tb(+zz*1t)6@3f(*pd7c56j%%xq3pdc6odu8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cryptic-ocean-84554.herokuapp.com'']
 
 
 # Application definition
